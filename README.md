@@ -23,7 +23,7 @@
 
 #### 1.1.1环境搭建
 
-在Oracle官网http://www.oracle.com。下载JDK进行安装，具体安装步骤以及环境配置步骤网上教程很多，不再赘述。
+在<a href="http://www.oracle.com">Oracle官网</a> 下载JDK进行安装，具体安装步骤以及环境配置步骤网上教程很多，不再赘述。
 
 JDK包含JRE和开发工具；JRE包含JVM和核心类库。
 
@@ -298,6 +298,387 @@ public class TypeConversion {
 ```
 
 
+
+#### 1.2.6运算符
+
+算术运算符：+、-、*、/、% 。
+
+- 整数除法操作只能得到整数，要想得到小数，必须有浮点数参与运算。
+-  a % b 的结果是 a - (a / b) * b。
+- 字符的“+”操作，字符类型要先提升为int类型再参与运算。
+- 字符串的“+”操作，可以进行字符串的拼接，字符串可以用"+"拼接任意类型。
+
+java中的自增、自减运算符，可以放变量后，也可以放变量前。可以单独使用，也可以在表达式中使用。
+
+赋值运算符：=、+=、-=、*=、/=、%= 。
+
+- +=这类复合的赋值运算符，底层自带强转，可以避免short、byte类型参与运算时发生的类型转换错误。
+
+关系运算符（比较运算符）：==、!=、>、<、>=、<= 。返回结果是boolean值，只能是true或者false。
+
+逻辑运算符：与 &、或 |、非 !、异或 ^ 。返回值为boolean类型的值。
+
+短路逻辑运算符：短路与&&、短路或 ||  。若运算符前的得到结果足以支撑最终结果，就不再执行符号后的值。
+
+三元运算符： 格式： `关系表达式 ? 表达式1: 表达式2;`
+
+```java
+package chapter01.demo07;
+
+/**
+ * @author https://github.com/junlibs
+ * @date 2023-01-14
+ * @Description
+ */
+public class Operator {
+    public static void main(String[] args) {
+        //算术运算符有 +、-、*、/、%
+        //字符的“+”运算，字符类型要先提升为int再参与运算
+        int a = 1;
+        char b = 'a';
+        System.out.println(a + b);//98
+        //字符串的“+”
+        System.out.println(1 + 1 + "java");//2java
+        System.out.println("1 + 1 = " + 2 + 2);//1+1=22
+
+        //自增自减运算符，可以放变量后，也可以放变量前。可以单独使用，也可以在表达式中使用
+        int num = 10;
+        System.out.println(num + num++);//20
+        System.out.println(num);//11
+
+        //+=、-=、/=、%= 这类复合的赋值运算符，可以避免类型转换错误
+        short numShort = 10;
+        numShort += 4;
+        System.out.println(numShort);
+
+        //关系运算符，返回值为boolean值
+        System.out.println(4 == 5);//falsle
+
+        //逻辑运算符，&、|、！、^ 。返回值为boolean值
+        System.out.println(true & false);//false
+
+        //短路逻辑运算符：&&、||
+        int x = 3;
+        int y = 4;
+        System.out.println(++x > 4 && y-- < 5);//false
+        System.out.println("x:" + x);//4
+        System.out.println("y:" + y);//4
+
+        //三元运算符
+        int num1 = 10;
+        int num2 = 20;
+        int max = num1 > num2 ? num1 : num2;
+        System.out.println(max);
+    }
+}
+```
+
+
+
+#### 1.2.7 if语句、if-else语句、if-else if-else语句
+
+```java
+package chapter01.demo08;
+
+/**
+ * @author https://github.com/junlibs
+ * @date 2023-01-14
+ * @Description
+ */
+public class If {
+    public static void main(String[] args) {
+        //if语句
+        int age = 19;
+        if (age >= 18) {
+            System.out.println("成年了");
+        }
+
+        //if-else语句
+        int num = 3;
+        if (num % 2 == 0) {
+            System.out.println("偶数");
+        } else {
+            System.out.println("奇数");
+        }
+
+        //if-else if-else语句
+        int score = 80;
+        if (score >= 90) {
+            System.out.println("优秀");
+        } else if (score >= 80) {
+            System.out.println("良好");
+        } else if (score >=70) {
+            System.out.println("中等");
+        } else if (score >= 60) {
+            System.out.println("及格");
+        } else {
+            System.out.println("不及格");
+        }
+    }
+}
+```
+
+#### 1.2.8 switch语句
+
+格式：
+
+```
+switch(表达式){
+    case 值1:
+        语句体1;
+        break;
+    case 值2:
+        语句体2;
+        break;
+    //...
+    default:
+        语句体n+1;
+        break;
+}
+```
+
+执行流程：
+
+1. 首先计算表达式的值。
+2. 依次和case后面的值进行比较，如果有对应的值，就会执行相应的语句，在执行的过程中，遇到break就会结束。
+3. 如果所有的case后面的值和表达式的值都不匹配，就会执行default里面的语句体，然后结束整个switch语句。
+
+注意事项：
+
+- 表达式：就是将要匹配的值，**类型可以是byte、short、int、char，JDK5以后可以是枚举，JDK7以后可以是String**。
+- case：后面跟的是要和表达式进行比较的值，即被匹配的值。
+- break：表示结束的意思，用来结束switch语句。**break可以省略，省略后发生case穿透**。
+- deault：表示所有情况都不匹配的时候，就执行该处的内容，和if语句的else相似。default可以可以省略，语法不会有问题，但是不建议省略。default不一定写在最下面，可以在任意位置，但是规范的代码编写就应该写最下面。
+- **case后面的值只能是字面量/常量，不能是变量**。
+- case给出的值不允许重复。
+
+switch新特性（JDK12）-Lamda表达式：
+
+举例说明：需求，判断数字是1,2,3，分别打印汉字一，二，三。
+
+- JDK12之前的实现方式
+
+```java
+//JDK12之前
+public class SwitchDemo {
+    public static void main(String[] args) {
+        int number = 1;
+        switch (number) {
+            case 1:
+                System.out.println("一");
+                break;
+            case 2:
+                System.out.println("二");
+                break;
+            case 3:
+                System.out.println("三");
+                break;
+            default:
+                System.out.println("没有这种选项");
+                break;
+        }
+    }
+ }
+```
+
+- JDK12之后的实现方式，除了上面代码的方式之外，还可以使用Lamda表达式进行简化书写
+
+```java
+//JDK12之后
+public class SwitchDemo {
+    public static void main(String[] args) {
+        int number = 1;
+        switch (number) {
+                case 1 -> {
+                    System.out.println("一");
+                }
+                case 2 -> {
+                    System.out.println("二");
+                }
+                case 3 -> {
+                    System.out.println("三");
+                }
+                default -> {
+                    System.out.println("没有这种选项");
+                }
+        }
+    }
+}
+```
+
+- 如果case后面的语句体中只有一行代码，也可以把大括号进行省略
+
+```java
+//如果case后面的语句体中只有一行代码，也可以把大括号进行省略
+public class Demo {
+    public static void main(String[] args) {
+        int number = 1;
+        switch (number) {
+                case 1 -> System.out.println("一");
+                case 2 -> System.out.println("二");
+                case 3 -> System.out.println("三");
+                default -> System.out.println("没有这种选项");
+        }
+    }
+}
+```
+
+- switch执行后的结果也可以保存到变量中，即用一个变量接收结果。如，String s = switch(...) {...}。
+
+
+
+#### 1.2.9 for循环
+
+```java
+package chapter01.demo10;
+
+/**
+ * @author https://github.com/junlibs
+ * @date 2023-01-14
+ * @Description
+ */
+public class ForDemo {
+    public static void main(String[] args) {
+        //for循环打印9*9乘法表
+        for (int i = 1; i < 10; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.printf("%d * %d = %d\t", j, i, i * j);
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+for的死循环：`for(;;){}`
+
+
+
+#### 1.2.10 while循环
+
+```java
+package chapter01.demo11;
+
+/**
+ * @author https://github.com/junlibs
+ * @date 2023-01-14
+ * @Description
+ */
+public class WhileDemo {
+    public static void main(String[] args) {
+        //while循环打印9*9乘法表
+        int i = 1;
+        while( i < 10) {
+            int j = 1;
+            while (j <= i) {
+                System.out.printf("%d * %d = %d\t", j, i, i * j);
+                j++;
+            }
+            System.out.println();
+            i++;
+        }
+    }
+}
+```
+
+while的死循环：`while(true) {}`
+
+
+
+#### 1.2.11 do-while循环
+
+```java
+package chapter01.demo12;
+
+/**
+ * @author https://github.com/junlibs
+ * @date 2023-01-14
+ * @Description
+ */
+public class DoWhileDemo {
+    public static void main(String[] args) {
+        //while循环打印9*9乘法表
+        int i = 1;
+        do {
+            int j = 1;
+            do {
+                System.out.printf("%d * %d = %d\t", j, i, i * j);
+                j++;
+            } while (j <= i);
+            i++;
+            System.out.println();
+        } while (i < 10);
+    }
+}
+```
+
+do-while的死循环：`do{} while(true);`
+
+
+
+#### 1.2.12 break和continue在循环中的使用
+
+continue是跳过某一次循环体的执行，继续下一次的执行。
+
+break是终止当前的整个循环。
+
+
+
+#### 1.2.13 Random类-猜数字
+
+需求：程序自动生成一个1~100之间的数字，规定最多猜5次。
+
+```java
+package chapter01.demo13;
+
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ * @author https://github.com/junlibs
+ * @date 2023-01-14
+ * @Description
+ */
+public class RandomDemo {
+    public static void main(String[] args) {
+        //程序自动生成一个1~100之间的数字
+        Random random = new Random();
+        int randomNum = random.nextInt(100) + 1;
+
+        //规定最多猜测次数
+        int total = 5;
+
+        //计数器，用来记录用户猜测次数
+        int count = 0;
+
+        //flag，标记用户是否猜对，true表示没有猜对
+        boolean flag = true;
+
+        //用户输入猜测数字
+        Scanner scanner = new Scanner(System.in);
+
+        //如果没有猜对，并且次数没达到上限，就可以继续猜
+        while (flag && count < total) {
+            System.out.println("请输入您的猜测：");
+            //用户输入猜测的数字
+            int guessNum = scanner.nextInt();
+            //判断是否猜对
+            if (guessNum == randomNum) {
+                System.out.println("恭喜你，猜对了");
+                flag = false;
+            } else if (guessNum > randomNum) {
+                System.out.println("很遗憾，您猜的数字太大了");
+                count++;
+                System.out.println("你还有" + (total - count) + "次机会");
+            } else {
+                System.out.println("很遗憾，您猜的数字太小了");
+                count++;
+                System.out.println("你还有" + (total - count) + "次机会");
+            }
+        }
+    }
+}
+```
 
 
 
