@@ -682,7 +682,62 @@ public class RandomDemo {
 
 
 
+#### 1.2.14 数组
 
+java中的数组，存储的是同种数据类型的多个值。
+
+- 声明格式一： `数据类型[] 变量名`；
+- 声明格式二：`数据类型 变量名[]`.
+
+动态初始化：只需要指定数组长度，元素值由系统赋默认值。`数据类型[] 变量名 = new 数据类型[数组长度];`
+
+静态初始化：在初始化时，指定数组元素值，而长度会由系统自动计算出。`数据类型[] 变量名 = new 数据类型[] {数据1, 数据2,...};`或者简化格式：`数据类型[] 变量名 = {数据1, 数据2, ...};`
+
+数组的遍历：使用循环，利用数组的length属性。
+
+```java
+package chapter01.demo14;
+
+/**
+ * @author https://github.com/junlibs
+ * @date 2023-01-16
+ * @Description
+ */
+public class ArrayDemo {
+    public static void main(String[] args) {
+        int[] arr = new int[3];//动态初始化
+        System.out.println(arr);//[I@1b6d3586
+        System.out.println(arr[0]);//0
+        System.out.println(arr[1]);//0
+        System.out.println(arr[2]);//0
+        arr[2] = 11;
+        System.out.println(arr[2]);//11
+        
+        int[] arrInt = {11, 22,33};//静态初始化
+        System.out.println(arrInt[0]);
+        System.out.println(arrInt[1]);
+        System.out.println(arrInt.length);//3
+    }
+}
+```
+
+
+
+#### 1.2.15 java中的内存分配-简述
+
+栈内存：方法运行时，进入的内存。局部变量都存放于这块内存当中。
+
+堆内存：new出来的内容都会进入堆内存，并且会存在地址值。
+
+方法区：字节码文件（.class）加载时进入的内存。
+
+本地方法栈：调用操作系统相关资源。
+
+寄存器：交给cpu去使用的。
+
+以一个一维数组为例：简图如下。
+
+<img src="images/chapter01/java内存分配简图.png">
 
 ## <a id="chapter02">chapter02-面向对象基础</a>
 
