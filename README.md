@@ -739,6 +739,49 @@ public class ArrayDemo {
 
 <img src="images/chapter01/java内存分配简图.png">
 
+
+
+#### 1.2.16 方法概述及方法重载
+
+方法就是一段具有独立功能的代码块，不调用不执行。方法的出现，可以提高代码的复用性。方法与方法之间是平级关系，不能嵌套定义。
+
+方法的参数，如果传递的是基本数据类型，就是传递的具体的值；如果传递的是引用数据类型，就是传递的内存地址值。
+
+方法重载：在同一个类中，方法名形同，参数不同的方法。
+
+- 参数不同：或个数不同，或类型不同，或顺序不同。顺序不同可以构成重载，但是不建议！
+- 识别方法之间是否是重载关系，只看方法名和参数，跟返回值无关。
+
+```java
+package chapter01.demo15;
+
+/**
+ * @author https://github.com/junlibs
+ * @date 2023-01-26
+ * @Description
+ */
+public class MethodOverload {
+    public static void main(String[] args) {
+        boolean result1 = compare(10, 20);
+        boolean result2 = compare(10.1, 20.1);
+        System.out.println(result1);
+        System.out.println(result2);
+    }
+
+    public static boolean compare(int a, int b) {
+        return a == b;
+    }
+
+    public static boolean compare(double a, double b) {
+        return a == b;
+    }
+}
+```
+
+
+
+
+
 ## <a id="chapter02">chapter02-面向对象基础</a>
 
 ## <a id="chapter03">chapter03-常用API</a>
