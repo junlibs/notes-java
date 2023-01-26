@@ -3,7 +3,7 @@ package chapter01.demo03;
 /**
  * @author https://github.com/junlibs
  * @date 2023-01-13
- * @Description 标识符
+ * @Description 标识符及命名规范
  */
 public class Identifier {
     public static void main(String[] args) {
