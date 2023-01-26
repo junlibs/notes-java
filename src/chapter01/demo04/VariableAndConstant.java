@@ -3,7 +3,7 @@ package chapter01.demo04;
 /**
  * @author https://github.com/junlibs
  * @date 2023-01-13
- * @Description 常量和变量
+ * @Description java程序中的 常量和变量的简单说明
  */
 public class VariableAndConstant {
     //静态常量（类变量）
