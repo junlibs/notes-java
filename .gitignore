@@ -97,7 +97,6 @@ buildNumber.properties
 .settings/
 bin
 target
-dependency-reduced-pom.xml
 *.sublime-*
 /scratch
 .gradle
@@ -105,5 +104,6 @@ build
 
 Guardfile
 README.html
-*.iml
 .idea
+
+tmp/
