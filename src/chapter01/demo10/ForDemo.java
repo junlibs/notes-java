@@ -3,7 +3,7 @@ package chapter01.demo10;
 /**
  * @author https://github.com/junlibs
  * @date 2023-01-14
- * @Description
+ * @Description for循环语句
  */
 public class ForDemo {
     public static void main(String[] args) {
