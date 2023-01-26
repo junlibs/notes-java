@@ -3,7 +3,7 @@ package chapter01.demo11;
 /**
  * @author https://github.com/junlibs
  * @date 2023-01-14
- * @Description
+ * @Description while循环语句
  */
 public class WhileDemo {
     public static void main(String[] args) {
