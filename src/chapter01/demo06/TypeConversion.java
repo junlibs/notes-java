@@ -1,6 +1,6 @@
 package chapter01.demo06;
 
-import java.lang.reflect.Field;
+
 
 /**
  * @author https://github.com/junlibs
@@ -13,7 +13,7 @@ public class TypeConversion {
         int number = 10;
         double doubleNum = number;//发生了隐式转换
         System.out.println(number);//10
-        System.out.println(doubleNum);//10
+        System.out.println(doubleNum);//10.0
         //强制转换
         byte a = 11;
         int b = (byte)a;
