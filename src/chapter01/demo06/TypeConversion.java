@@ -5,7 +5,7 @@ package chapter01.demo06;
 /**
  * @author https://github.com/junlibs
  * @date 2023-01-13
- * @Description
+ * @Description java程序的类型转换
  */
 public class TypeConversion {
     public static void main(String[] args) throws Exception {
