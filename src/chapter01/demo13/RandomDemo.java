@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * @author https://github.com/junlibs
  * @date 2023-01-14
- * @Description
+ * @Description Random类基本应用
  */
 public class RandomDemo {
     public static void main(String[] args) {
