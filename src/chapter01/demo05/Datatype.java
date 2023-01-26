@@ -3,7 +3,7 @@ package chapter01.demo05;
 /**
  * @author https://github.com/junlibs
  * @date 2023-01-13
- * @Description 基本数据类型
+ * @Description java中的基本数据类型
  */
 public class Datatype {
     static int staticNum;//类的成员变量，如果不给初值，JVM会赋默认值
