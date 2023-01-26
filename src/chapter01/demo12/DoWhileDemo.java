@@ -3,7 +3,7 @@ package chapter01.demo12;
 /**
  * @author https://github.com/junlibs
  * @date 2023-01-14
- * @Description
+ * @Description do-while 循环语句
  */
 public class DoWhileDemo {
     public static void main(String[] args) {
